@@ -1,71 +1,69 @@
-# Datenschutz
+# Privacy
 
-DayDone ist eine lokale Familien-App. Die Verarbeitung ist auf das Gerät
-beschränkt.
+DayDone is a local family app. All processing is limited to the device.
 
-## Welche Daten verarbeitet die App?
+## What data does the app process?
 
-* Namen, Farben, Avatare und Profilfotos der Familienmitglieder
-* Aufgaben, Teilaufgaben, Wiederholungen und Abschlussstände
-* Sternarten, Belohnungsregeln und das Stern-/Minuten-Ledger
-* Einstellungen (z. B. ausgewählte Kalender, Zuordnungen, Auto-Sync)
-* Kalendertermine, die über den Android-Kalender-Provider gelesen werden
-* die zentrale Bildbibliothek mit Standard- und importierten Bildern
+* Names, colors, avatars and profile photos of family members
+* Tasks, subtasks, recurrence rules and completion states
+* Star types, reward rules and the star/minute ledger
+* Settings (for example selected calendars, assignments, auto-sync)
+* Calendar events read through the Android calendar provider
+* The central image library with default and imported images
 
-## Wo liegen die Daten?
+## Where is the data stored?
 
-* Familien-, Aufgaben- und Sterndaten liegen in einer lokalen SQLite-Datenbank
-  im privaten App-Speicher.
-* Profilfotos werden als JPEG-Dateien im privaten App-Verzeichnis
-  `member_photos` gespeichert. Bibliotheks- und Aufgabenbilder liegen unter
-  `images`. Die Datenbank enthält nur Dateinamen; es werden keine Fotos in die
-  Android-Galerie geschrieben oder hochgeladen.
-* Einstellungen liegen lokal in Android DataStore.
-* Backups werden nur auf ausdrückliche Aktion im „Mehr“-Tab im privaten
-  App-Speicher erzeugt. Sie enthalten die Datenbank, die Profilfotos und die
-  Bildbibliothek. Sie sind nicht verschlüsselt und werden nicht automatisch
-  hochgeladen.
-* Android Cloud-Backup ist deaktiviert (`android:allowBackup="false"`).
+* Family, task and star data is stored in a local SQLite database in the app's
+  private storage.
+* Profile photos are stored as JPEG files in the private app directory
+  `member_photos`. Library and task images live under `images`. The database
+  contains only file names; no photos are written to the Android gallery or
+  uploaded.
+* Settings are stored locally in Android DataStore. The per-app language is
+  stored by AppCompat, also locally.
+* Backups are created only on explicit action in the **More** tab and stay in
+  the app's private storage. They contain the database, the profile photos and
+  the image library. They are not encrypted and are not uploaded automatically.
+* Android cloud backup is disabled (`android:allowBackup="false"`).
 
-## Netzwerk und Konten
+## Network and accounts
 
-* Die App verlangt keine Anmeldung und kein Konto.
-* Die aktive Kalenderanbindung nutzt ausschließlich den
-  Android-Kalender-Provider. Die Synchronisierung mit einem Google-Konto
-  übernimmt der System-Kalender des Geräts, nicht DayDone.
-* Es gibt keine Analyse-, Werbe- oder Crash-Reporting-SDKs.
-* Der direkte Google-Calendar-API-Pfad ist im Code vorbereitet, seit Version
-  1.5.0 aber deaktiviert. Solange er nicht konfiguriert ist, baut die App
-  keine eigenen Netzwerkverbindungen auf.
+* The app requires no login and no account.
+* The active calendar integration uses only the Android calendar provider.
+  Synchronization with a Google account is handled by the device's system
+  calendar, not by DayDone.
+* There are no analytics, advertising or crash reporting SDKs.
+* The direct Google Calendar API path is prepared in the code but has been
+  disabled since version 1.5.0. While it is not configured, the app opens no
+  network connections of its own.
 
-## Berechtigungen
+## Permissions
 
-* `READ_CALENDAR` / `WRITE_CALENDAR`: Kalender anzeigen und Termine anlegen,
-  bearbeiten oder löschen. Die Berechtigung wird zur Laufzeit erfragt und kann
-  jederzeit in den Android-Einstellungen entzogen werden. Ohne sie bleiben
-  Aufgaben, Sterne und Familie nutzbar.
-* `CAMERA`: nur beim Aufnehmen eines Profilfotos. Die Berechtigung wird zur
-  Laufzeit erfragt und kann jederzeit in den Android-Einstellungen entzogen
-  werden. Ohne sie bleibt die Auswahl aus der Galerie möglich.
-* Die Galerie-Auswahl nutzt den Android Photo Picker bzw. den
-  Dokumenten-Picker. Dafür ist keine Speicherberechtigung erforderlich;
-  DayDone fordert insbesondere keinen Zugriff auf die gesamte Galerie an.
-* `INTERNET` / `ACCESS_NETWORK_STATE`: für den optionalen, derzeit inaktiven
-  Google-API-Pfad und die WorkManager-Netzwerkbedingung.
+* `READ_CALENDAR` / `WRITE_CALENDAR`: show calendars and create, edit or delete
+  events. The permission is requested at runtime and can be revoked at any time
+  in the Android settings. Without it, tasks, stars and family remain usable.
+* `CAMERA`: only when taking a profile photo. The permission is requested at
+  runtime and can be revoked at any time in the Android settings. Without it,
+  selecting an image from the gallery remains possible.
+* Gallery selection uses the Android Photo Picker or the document picker. This
+  requires no storage permission; in particular, DayDone does not request
+  access to the entire gallery.
+* `INTERNET` / `ACCESS_NETWORK_STATE`: for the optional, currently inactive
+  Google API path and the WorkManager network constraint.
 
-## Weitergabe
+## Sharing
 
-Es werden keine personenbezogenen Daten an den App-Hersteller oder Dritte
-übermittelt. Kalenderdaten können über den System-Kalender mit dem dort
-angemeldeten Konto synchronisiert werden; darauf hat die App keinen Einfluss.
+No personal data is transmitted to the app developer or third parties.
+Calendar data may be synchronized through the system calendar with the account
+signed in there; the app has no influence over that.
 
-## Löschung
+## Deletion
 
-Die Daten lassen sich in den Android-Einstellungen über „App-Daten löschen“
-entfernen. Einzelne Einträge werden in der App gelöscht; Ledger-Buchungen
-werden aus Nachvollziehbarkeitsgründen korrigiert statt gelöscht.
+Data can be removed in the Android settings via “Delete app data”. Individual
+entries are deleted inside the app; ledger bookings are corrected rather than
+deleted for traceability reasons.
 
-## Kontakt
+## Contact
 
-Fehlerberichte und Fragen können über den Issue-Tracker dieses Repositories
-eingereicht werden.
+Bug reports and questions can be submitted through the issue tracker of this
+repository.
